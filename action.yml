@@ -17,5 +17,5 @@ inputs:
     description: "Output file to write to"
     required: false
 runs:
-  using: "node23"
+  using: "node20"
   main: "dist/main.js"
