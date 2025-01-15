@@ -78,6 +78,8 @@ async function run() {
                   'json',
                 )
                 .write();
+
+              core.info(`Dumped output to summary`);
             }
           } else {
             core.warning('Task completed without output');
