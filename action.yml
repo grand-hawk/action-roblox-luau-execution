@@ -1,5 +1,6 @@
 name: 'Roblox Luau Execution'
 description: 'Executes Luau code from a file in a execution session'
+author: 'grand-hawk'
 inputs:
   roblox_api_key:
     description: 'Roblox Open Cloud API key (string)'
@@ -22,3 +23,5 @@ inputs:
 runs:
   using: 'node20'
   main: 'dist/index.js'
+branding:
+  icon: 'package'
