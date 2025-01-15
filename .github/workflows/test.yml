@@ -37,4 +37,5 @@ jobs:
           roblox_api_key: ${{ secrets.ROBLOX_API_KEY }}
           universe_id: ${{ vars.ROBLOX_UNIVERSE_ID}}
           place_id: ${{ vars.ROBLOX_PLACE_ID}}
-          luau_file: 'tests/workflow.luau'
+          luau_file: 'tests/workflow/main.luau'
+          dump_to_summary: true

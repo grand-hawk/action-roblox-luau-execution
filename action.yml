@@ -1,21 +1,24 @@
-name: "Roblox Luau Execution"
-description: "Executes Luau code from a file in a execution session"
+name: 'Roblox Luau Execution'
+description: 'Executes Luau code from a file in a execution session'
 inputs:
   roblox_api_key:
-    description: "Roblox Open Cloud API key"
+    description: 'Roblox Open Cloud API key (string)'
     required: true
   universe_id:
-    description: "Universe id"
+    description: 'Universe id (string)'
     required: true
   place_id:
-    description: "Place id"
+    description: 'Place id (string)'
     required: true
   luau_file:
-    description: "Luau file to execute"
+    description: 'Luau file to execute (string path)'
     required: true
   output_file:
-    description: "Output file to write to"
+    description: 'Output file to write to (string path)'
+    required: false
+  dump_to_summary:
+    description: 'Dump output to summary as codeblock (boolean)'
     required: false
 runs:
-  using: "node20"
-  main: "dist/index.js"
+  using: 'node20'
+  main: 'dist/index.js'

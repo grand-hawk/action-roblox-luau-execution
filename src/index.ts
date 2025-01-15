@@ -14,6 +14,7 @@ async function run() {
     const placeId = core.getInput('place_id');
     const luauFile = core.getInput('luau_file');
     const outputFile: string | undefined = core.getInput('output_file');
+    const dumpToSummary = core.getBooleanInput('dump_to_summary') ?? false;
 
     const luauFilePath = path.resolve(luauFile);
     const outputFilePath = outputFile && path.resolve(outputFile);
@@ -68,6 +69,15 @@ async function run() {
               core.info(`Wrote output to "${outputFilePath}"`);
             } else {
               core.info(`No output file specified`);
+            }
+
+            if (dumpToSummary) {
+              await core.summary
+                .addCodeBlock(
+                  JSON.stringify(taskResult.output.results, undefined, 4),
+                  'json',
+                )
+                .write();
             }
           } else {
             core.warning('Task completed without output');
