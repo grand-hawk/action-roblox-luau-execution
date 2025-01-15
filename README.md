@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Execute Luau Script
-        uses: grand-hawk/roblox-luau-execution@v1
+        uses: grand-hawk/roblox-luau-execution@0.1.0
         with:
           roblox_api_key: ${{ secrets.ROBLOX_API_KEY }}
           universe_id: '123456789'
