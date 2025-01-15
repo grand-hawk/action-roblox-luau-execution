@@ -31,9 +31,13 @@ jobs:
       - name: Build the action
         run: pnpm run build
 
+      - name: Get version from package.json
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+
       - name: Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
         with:
+          tag_name: ${{ steps.package-version.outputs.current-version }}
           draft: true
           generate_release_notes: true
