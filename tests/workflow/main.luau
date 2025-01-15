@@ -10,4 +10,4 @@ for _, child in folder:GetChildren() do
 	table.insert(childNames, child.Name)
 end
 
-print(HttpService:JSONEncode(HttpService))
+print(HttpService:JSONEncode(childNames))
