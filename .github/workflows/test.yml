@@ -1,0 +1,38 @@
+name: Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+      - prod
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js 23
+        uses: actions/setup-node@v3
+        with:
+          node-version: 23
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies with pnpm
+        run: pnpm install
+
+      - name: Build the action
+        run: pnpm run build
+
+      - name: Run test
+        uses: ./
+        with:
+          roblox_api_key: ${{ secrets.ROBLOX_API_KEY }}
+          universe_id: ${{ vars.ROBLOX_UNIVERSE_ID}}
+          place_id: ${{ vars.ROBLOX_PLACE_ID}}
+          luau_file: 'tests/workflow.luau'
