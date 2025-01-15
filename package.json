@@ -1,0 +1,31 @@
+{
+  "name": "action-roblox-luau-execution",
+  "version": "0.1.0",
+  "description": "Executes Luau code from a file in a execution session",
+  "license": "MIT",
+  "author": "Astrid <git@astrid.email>",
+  "homepage": "https://github.com/grand-hawk/action-roblox-luau-execution",
+  "bugs": "https://github.com/grand-hawk/action-roblox-luau-execution/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grand-hawk/action-roblox-luau-execution"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "format": "prettier -w ."
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "ky": "^1.7.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.6",
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
