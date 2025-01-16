@@ -6,7 +6,7 @@ on:
       - prod
 
 jobs:
-  build-and-release:
+  build-and-commit:
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -35,6 +35,15 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: 'dist/index.js -f'
+
+  version-and-release:
+    needs: build-and-commit
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Get version from package.json
         id: package-version
