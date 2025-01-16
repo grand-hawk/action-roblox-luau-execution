@@ -20,6 +20,7 @@ inputs:
   dump_to_summary:
     description: 'Dump output to summary as codeblock (boolean)'
     required: false
+    default: false
 outputs:
   results:
     description: 'Execution session results'
