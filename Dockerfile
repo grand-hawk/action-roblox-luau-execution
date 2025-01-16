@@ -10,4 +10,4 @@ RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store pnpm install
 
 RUN pnpm run build
 
-CMD ["node", "dist/index.js"]
+CMD ["node", "/build/dist/index.js"]
