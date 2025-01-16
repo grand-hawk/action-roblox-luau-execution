@@ -26,3 +26,5 @@ jobs:
           output_file: 'path/to/output.txt' # optional
           dump_to_summary: true # optional
 ```
+
+For an example production workflow, see [this](https://github.com/grand-hawk/artillery-calculator/blob/dev/.github/workflows/update_importedguns.yml).
