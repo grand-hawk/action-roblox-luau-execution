@@ -32,18 +32,15 @@ jobs:
         run: pnpm run build
 
       - name: Commit build
+        id: build-commit
         uses: EndBug/add-and-commit@v9
         with:
           add: 'dist/index.js -f'
 
-  version-and-release:
-    needs: build-and-commit
-    runs-on: ubuntu-24.04
-    permissions:
-      contents: write
-    steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.build-commit.outputs.commit_long_sha }}
 
       - name: Get version from package.json
         id: package-version
