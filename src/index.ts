@@ -36,8 +36,6 @@ async function run() {
     while (await setTimeout(3_500, true)) {
       const taskResult = await getLuauExecutionSessionTask(
         createdTask.path,
-        universeId,
-        placeId,
         apiKey,
       );
 

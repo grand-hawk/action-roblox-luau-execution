@@ -12,10 +12,10 @@
   },
   "keywords": [],
   "type": "module",
-  "main": "dist/index.global.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsup src/index.ts --format iife",
+    "build": "tsup src/index.ts --format esm",
     "format": "prettier -w ."
   },
   "dependencies": {

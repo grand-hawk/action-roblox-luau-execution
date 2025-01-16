@@ -24,7 +24,14 @@ outputs:
   results:
     description: 'Execution session results'
 runs:
-  using: 'node20'
-  main: 'dist/index.global.js'
+  using: 'dockerfile'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.roblox_api_key }}
+    - ${{ inputs.universe_id }}
+    - ${{ inputs.place_id }}
+    - ${{ inputs.luau_file }}
+    - ${{ inputs.output_file }}
+    - ${{ inputs.dump_to_summary }}
 branding:
   icon: 'package'

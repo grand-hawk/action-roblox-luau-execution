@@ -56,8 +56,6 @@ export async function createLuauExecutionSessionTask(
 
 export async function getLuauExecutionSessionTask(
   path: string,
-  universeId: string,
-  placeId: string,
   apiKey: string,
 ) {
   return ky
