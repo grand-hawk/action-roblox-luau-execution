@@ -24,7 +24,7 @@ outputs:
   results:
     description: 'Execution session results'
 runs:
-  using: 'dockerfile'
+  using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.roblox_api_key }}
