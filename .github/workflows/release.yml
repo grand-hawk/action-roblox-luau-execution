@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  build-and-commit:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get version from package.json
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.package-version.outputs.current-version }}
+          draft: true
+          generate_release_notes: true
