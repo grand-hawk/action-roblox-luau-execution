@@ -12,3 +12,6 @@ pnpm-debug.log*
 
 # package managers
 package-lock.json
+
+# production
+dist
