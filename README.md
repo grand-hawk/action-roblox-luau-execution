@@ -16,7 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Execute Luau Script
+      - name: Execute script
         uses: grand-hawk/action-roblox-luau-execution@0.1.0
         with:
           roblox_api_key: ${{ secrets.ROBLOX_API_KEY }}
