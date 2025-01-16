@@ -1,6 +1,6 @@
 {
   "name": "action-roblox-luau-execution",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Executes Luau code from a file in a execution session",
   "license": "MIT",
   "author": "Astrid <git@astrid.email>",
