@@ -56,15 +56,16 @@ async function run() {
 
         case 'COMPLETE': {
           if (taskResult.output) {
+            const stringifiedOutput = JSON.stringify(taskResult.output.results);
+
+            core.setOutput('output', stringifiedOutput);
+
             if (outputFilePath) {
               fs.promises.mkdir(path.dirname(outputFilePath), {
                 recursive: true,
               });
 
-              await fs.promises.writeFile(
-                outputFilePath,
-                JSON.stringify(taskResult.output.results),
-              );
+              await fs.promises.writeFile(outputFilePath, stringifiedOutput);
 
               core.info(`Wrote output to "${outputFilePath}"`);
             } else {
