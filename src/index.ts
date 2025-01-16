@@ -13,11 +13,17 @@ async function run() {
     const universeId = core.getInput('universe_id', { required: true });
     const placeId = core.getInput('place_id', { required: true });
     const luauFile = core.getInput('luau_file', { required: true });
-    const outputFile: string | undefined = core.getInput('output_file');
+    const outputFile = core.getInput('output_file') || undefined;
     const dumpToSummary = core.getBooleanInput('dump_to_summary') ?? false;
 
     const luauFilePath = path.resolve(luauFile);
     const outputFilePath = outputFile && path.resolve(outputFile);
+
+    if (core.isDebug()) {
+      core.debug(`CWD: ${process.cwd()}`);
+      core.debug(`Luau file path: ${luauFilePath}`);
+      core.debug(`Output file path: ${outputFilePath}`);
+    }
 
     if (!fs.existsSync(luauFilePath)) {
       throw new Error('File path from "luau_file" does not exist');

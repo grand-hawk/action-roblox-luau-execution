@@ -17,6 +17,7 @@ inputs:
   output_file:
     description: 'Output file to write to (string path)'
     required: false
+    default: ''
   dump_to_summary:
     description: 'Dump output to summary as codeblock (boolean)'
     required: false
