@@ -13,11 +13,8 @@ async function run() {
     const universeId = core.getInput('universe_id', { required: true });
     const placeId = core.getInput('place_id', { required: true });
     const luauFile = core.getInput('luau_file', { required: true });
-    const outputFile: string | undefined = core.getInput('output_file', {
-      required: false,
-    });
-    const dumpToSummary =
-      core.getBooleanInput('dump_to_summary', { required: false }) ?? false;
+    const outputFile: string | undefined = core.getInput('output_file');
+    const dumpToSummary = core.getBooleanInput('dump_to_summary') ?? false;
 
     const luauFilePath = path.resolve(luauFile);
     const outputFilePath = outputFile && path.resolve(outputFile);
@@ -61,7 +58,7 @@ async function run() {
           if (taskResult.output) {
             const stringifiedOutput = JSON.stringify(taskResult.output.results);
 
-            core.setOutput('output', stringifiedOutput);
+            core.setOutput('results', stringifiedOutput);
 
             if (outputFilePath) {
               fs.promises.mkdir(path.dirname(outputFilePath), {

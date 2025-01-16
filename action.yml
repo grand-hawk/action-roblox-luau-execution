@@ -21,10 +21,10 @@ inputs:
     description: 'Dump output to summary as codeblock (boolean)'
     required: false
 outputs:
-  output:
-    description: 'Output'
+  results:
+    description: 'Execution session results'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'node20'
+  main: 'dist/index.js'
 branding:
   icon: 'package'
