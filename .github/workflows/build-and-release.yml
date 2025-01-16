@@ -34,8 +34,7 @@ jobs:
       - name: Commit build
         uses: EndBug/add-and-commit@v9
         with:
-          add: 'dist/index.js'
-          commit: -f
+          add: 'dist/index.js -f'
 
       - name: Get version from package.json
         id: package-version
