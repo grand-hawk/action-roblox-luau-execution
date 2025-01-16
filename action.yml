@@ -25,6 +25,6 @@ outputs:
     description: 'Execution session results'
 runs:
   using: 'node20'
-  main: 'dist/index.js'
+  main: 'dist/index.global.js'
 branding:
   icon: 'package'
