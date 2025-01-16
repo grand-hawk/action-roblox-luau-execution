@@ -20,4 +20,5 @@ jobs:
           universe_id: ${{ vars.ROBLOX_UNIVERSE_ID}}
           place_id: ${{ vars.ROBLOX_PLACE_ID}}
           luau_file: 'tests/workflow/main.luau'
+          output_file: '${{ runner.temp }}/output.json'
           dump_to_summary: true

@@ -65,11 +65,17 @@ async function run() {
             core.setOutput('results', stringifiedOutput);
 
             if (outputFilePath) {
-              fs.promises.mkdir(path.dirname(outputFilePath), {
-                recursive: true,
-              });
+              if (!fs.existsSync(path.dirname(outputFilePath))) {
+                await fs.promises.mkdir(path.dirname(outputFilePath), {
+                  recursive: true,
+                });
+              }
 
-              await fs.promises.writeFile(outputFilePath, stringifiedOutput);
+              await fs.promises.writeFile(
+                outputFilePath,
+                stringifiedOutput,
+                'utf-8',
+              );
 
               core.info(`Wrote output to "${outputFilePath}"`);
             } else {
