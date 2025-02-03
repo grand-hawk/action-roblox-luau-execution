@@ -1,6 +1,7 @@
 FROM node:20-alpine
 
 RUN corepack enable pnpm
+RUN corepack prepare pnpm@10.0.0 --activate
 
 COPY . /build
 WORKDIR /build
