@@ -9,15 +9,21 @@ import { setTimeout } from 'node:timers/promises';
 
 async function run() {
   try {
-    const apiKey = core.getInput('roblox_api_key');
-    const universeId = core.getInput('universe_id');
-    const placeId = core.getInput('place_id');
-    const luauFile = core.getInput('luau_file');
-    const outputFile: string | undefined = core.getInput('output_file');
+    const apiKey = core.getInput('roblox_api_key', { required: true });
+    const universeId = core.getInput('universe_id', { required: true });
+    const placeId = core.getInput('place_id', { required: true });
+    const luauFile = core.getInput('luau_file', { required: true });
+    const outputFile = core.getInput('output_file') || undefined;
     const dumpToSummary = core.getBooleanInput('dump_to_summary') ?? false;
 
     const luauFilePath = path.resolve(luauFile);
     const outputFilePath = outputFile && path.resolve(outputFile);
+
+    if (core.isDebug()) {
+      core.debug(`CWD: ${process.cwd()}`);
+      core.debug(`Luau file path: ${luauFilePath}`);
+      core.debug(`Output file path: ${outputFilePath}`);
+    }
 
     if (!fs.existsSync(luauFilePath)) {
       throw new Error('File path from "luau_file" does not exist');
@@ -36,8 +42,6 @@ async function run() {
     while (await setTimeout(3_500, true)) {
       const taskResult = await getLuauExecutionSessionTask(
         createdTask.path,
-        universeId,
-        placeId,
         apiKey,
       );
 
@@ -58,14 +62,20 @@ async function run() {
           if (taskResult.output) {
             const stringifiedOutput = JSON.stringify(taskResult.output.results);
 
-            core.setOutput('output', stringifiedOutput);
+            core.setOutput('results', stringifiedOutput);
 
             if (outputFilePath) {
-              fs.promises.mkdir(path.dirname(outputFilePath), {
-                recursive: true,
-              });
+              if (!fs.existsSync(path.dirname(outputFilePath))) {
+                await fs.promises.mkdir(path.dirname(outputFilePath), {
+                  recursive: true,
+                });
+              }
 
-              await fs.promises.writeFile(outputFilePath, stringifiedOutput);
+              await fs.promises.writeFile(
+                outputFilePath,
+                stringifiedOutput,
+                'utf-8',
+              );
 
               core.info(`Wrote output to "${outputFilePath}"`);
             } else {
