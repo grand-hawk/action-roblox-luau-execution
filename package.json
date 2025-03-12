@@ -23,9 +23,9 @@
     "ky": "^1.7.5"
   },
   "devDependencies": {
-    "@types/node": "^22.13.4",
-    "prettier": "^3.5.1",
-    "tsup": "^8.3.6",
-    "typescript": "^5.7.3"
+    "@types/node": "^22.13.10",
+    "prettier": "^3.5.3",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
   }
 }
